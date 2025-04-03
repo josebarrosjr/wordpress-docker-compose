@@ -13,7 +13,7 @@ services:
       WORDPRESS_DB_PASSWORD: \${DB_PASSWORD}
       WORDPRESS_DB_NAME: db_wordpress
     volumes:
-      - /mnt/efs/wordpress:/var/www/html
+      - /efs:/var/www/html
 
 volumes:
   wordpress_data:
