@@ -1,7 +1,6 @@
 services:
-  wordpress:
-    image: wordpress:latest
-    container_name: wordpress
+  web:
+    image: wordpress
     restart: always
     ports:
       - "80:80"
@@ -11,7 +10,10 @@ services:
       WORDPRESS_DB_PASSWORD: \${DB_PASSWORD}
       WORDPRESS_DB_NAME: db_wordpress
     volumes:
-      - /efs:/var/www/html
+      - /wordpress:/var/www/html
+    networks:
+      - tunel
 
-volumes:
-  wordpress_data:
+networks:
+  tunel:
+    driver: bridge
