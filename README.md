@@ -1,6 +1,6 @@
 # Atividade Docker PB -JAN 2025 | DevSecOps
 
-![logos](https://github.com/user-attachments/assets/5f9c51b8-4329-464c-8f30-dbeb6f61b87c)
+![logos](https://github.com/user-attachments/assets/545722c6-ea57-4c08-a497-27e7d8b27949)
 
 ## Projeto Prático Docker-AWS
 
@@ -116,36 +116,37 @@ Clique em **Banco de dados** no painel à esquerda, em seguida clique em **Criar
 
 Para esse projeto será feita a seguinte configuração durante a criação do Banco de Dados:
 
-![Captura de tela 2025-04-02 142627](https://github.com/user-attachments/assets/5f14a303-b939-4660-afb9-87835d32964e)
+![Captura de tela 2025-04-02 142627](https://github.com/user-attachments/assets/0f219d74-c96b-49b2-8520-5432fc510fc9)
 
 - **Método**: Criação Padrão
 - **Mecanismo**: MySQL
 - **Versão do Mecanismo**: sempre a última
 - **Modelo**: Gratuito/Free tier
 - **Disponibilidade**: Single-AZ (1 instância)
+  
+![Captura de tela 2025-04-02 142646](https://github.com/user-attachments/assets/754f5b79-4d49-450e-9c6d-f402d60b4111)
 
-![Captura de tela 2025-04-02 142646](https://github.com/user-attachments/assets/9d3df6e6-4d28-4aea-b338-2b9936510311)
 
 ### Configurações
 
 - Defina um **Identificador** para o banco de dados.
 - ⚠️ Defina um **Nome de usuário** e **Senha** que serão utilizados nas próximas etapas como Docker Compose.
+  
+![Captura de tela 2025-04-02 142729](https://github.com/user-attachments/assets/c0c94fcc-42bf-4e57-a748-119f89671053)
 
-![Captura de tela 2025-04-02 142729](https://github.com/user-attachments/assets/fdc82701-0184-45c9-b0c6-31bbecfe2731)
 
 ### Configurações da instância e Armazenamento
 
 - Altere a classe para `db.t3.micro`
 - Em **Configuração adicional de armazenamento** reduza o limite para o mnínimo permitido (22GB).
 
-![Captura de tela 2025-04-02 143230](https://github.com/user-attachments/assets/2b5c3efd-f6bb-47f6-9682-e14c4037e25a)
-
+![Captura de tela 2025-04-02 143230](https://github.com/user-attachments/assets/f763bb87-980a-4182-be27-34a74eb26dbe)
 
 ### Conectividade
 
 Nesta etapa conferimos apenas **VPC** selecionada é a que criamos anteriormente e o **Grupo de Segurança** `rds-sg`.
 
-![Captura de tela 2025-04-02 143710](https://github.com/user-attachments/assets/5f5d3f13-5972-494d-88b8-6524d739c86d)
+![Captura de tela 2025-04-02 143710](https://github.com/user-attachments/assets/0885843d-2e24-4577-a8dd-1395833c0939)
 
 Finalize clicando em **Criar Banco de Dados**. ✅
 O processo demora de 5 a 10 minutos para disponibilidade do banco.
@@ -157,7 +158,8 @@ O processo demora de 5 a 10 minutos para disponibilidade do banco.
 
 No painel principal da AWS busque por **EFS** e escolha, clique e em **Criar sistema de arquivos**, dê um nome e mantenha a VPC que criamos anteriormente. 
 
-![Captura de tela 2025-04-02 144314](https://github.com/user-attachments/assets/6564ff16-150f-4f57-b2dc-d666c72a6265)
+![Captura de tela 2025-04-02 144314](https://github.com/user-attachments/assets/3917376c-40d9-4231-ab81-616c5dd55402)
+
 
 Clique em **Personalizar**:
 - **DESABILITE** os backups automáticos.
@@ -165,24 +167,30 @@ Clique em **Personalizar**:
 
 Clique em **Próximo**.
 
-![Captura de tela 2025-04-03 194937](https://github.com/user-attachments/assets/8d2a0ab5-71a1-4766-8a98-dd7c7aec5b00)
+
+![Captura de tela 2025-04-03 194937](https://github.com/user-attachments/assets/5d680c97-bad2-415e-a06f-3f64ae1b7282)
 
 
 - Selecione a **VPC** que criamos.
 - Altere as duas sub-redes para as redes **Privadas**.
 - Selecione ambos os Grupos de Segurança como `efs-sg`.
 
-![Captura de tela 2025-04-03 195214](https://github.com/user-attachments/assets/b27c3cc4-2319-4d3a-a69c-1f191460f5cc)
+
+![Captura de tela 2025-04-03 195214](https://github.com/user-attachments/assets/7429f916-9cd3-411a-ba12-e79f3f62edd3)
+
 
 
 Clique em **Próximo** em todas as etapas a seguir até disponibilizar **Criar**, e clique.
 
 Após criado, no console principal do EFS, clique no que criamos e na tela seguinte clique em **Anexar**.
-![Captura de tela 2025-04-03 195503](https://github.com/user-attachments/assets/44b25286-a13e-4e77-ad82-9ab7fa2ef886)
+
+
+![Captura de tela 2025-04-03 195503](https://github.com/user-attachments/assets/ec95acf9-df70-43af-b455-84aaedc7917c)
 
 Copie o **assistente de montagem do EFS**:
 
-![Captura de tela 2025-04-03 200253](https://github.com/user-attachments/assets/b4da7257-c004-420b-a990-cddea859c569)
+
+![Captura de tela 2025-04-03 200253](https://github.com/user-attachments/assets/460e9424-1698-4d74-8ca7-cc08d0729478)
 
 Guarde esse comando para ser usado no User Data posteriormente.
 
@@ -267,8 +275,7 @@ sudo docker-compose up -d
 
 ```
 
-
-![Captura de tela 2025-04-02 094356](https://github.com/user-attachments/assets/a23cc14c-0324-48c4-8418-3d44da64f95b)
+![Captura de tela 2025-04-02 094356](https://github.com/user-attachments/assets/34962da5-3d8b-42a2-a95a-a479d23a7481)
 
 Clicar em **"Criar modelo de execuçao"**. ✅
 
@@ -281,8 +288,9 @@ Conforme a [documentação oficial](https://docs.aws.amazon.com/pt_br/elasticloa
 No console das Instâncias EC2, procure no painel clique em **Balanceamento de Carga / Load Balancer** e depois em **Criar Load Balancer**.
 
 Usaremos o **Classic Load Balancer**, distribuindo o tráfego de entrada do Wordpress nos dois destinos de instância do EC2 e suas zonas de disponibilidade. Isso aumenta a tolerância a falhas da aplicação.
+![Captura de tela 2025-04-03 092916](https://github.com/user-attachments/assets/973d9b75-e087-46fe-b9f8-67950a26f8eb)
 
-![Captura de tela 2025-04-03 092916](https://github.com/user-attachments/assets/3726eb62-1bb5-4010-9fcd-ee0b4591b453)
+
 
 Nas **Configurações básicas** escolha um nome (wordpress-lb, por exemplo), mantenha selecionado a opção **"Voltado para a Internet"**.
 
@@ -305,24 +313,29 @@ No console EC2, no painel direito procure e clique em **Auto Scaling / Grupos de
 
 Dê um nome para seu ASG e selecione o **Modelo de execuçao / Template** que criamos anteriormente no passo 2.3, altere a versão para `latest` para que sempre utilize a ultima independente da alteração que você fizer nesse template, e clique em **próximo**.
 
-![Captura de tela 2025-04-03 202859](https://github.com/user-attachments/assets/f902f964-3afb-478a-8da3-79f53110b843)
+![Captura de tela 2025-04-03 202859](https://github.com/user-attachments/assets/b383bf72-4386-4438-93fe-1c787ceb1e93)
+
 
 Selecione a VPC que criamos e as duas Sub-redes privadas, clique em **Próximo**.
 
-![Captura de tela 2025-04-03 202931](https://github.com/user-attachments/assets/bd197c45-cabd-4c5b-add3-73cb9d58d588)
+![Captura de tela 2025-04-03 202931](https://github.com/user-attachments/assets/787af70b-bbd6-4aca-97c9-326269f82ba4)
 
 Aqui altere conforme a imagem a seguir, coloque o **Load Balancer** que criamos e abaixo marque **Ative as verificações de integridade do Elastic Load Balancing**, e clique em **Próximo**.
 
-![Captura de tela 2025-04-03 203129](https://github.com/user-attachments/assets/460ca654-e3b3-4f35-bdbc-223867f35f74)
-![Captura de tela 2025-04-03 203246](https://github.com/user-attachments/assets/eacfd407-4f0e-48fd-b635-162aa87a46fa)
+![Captura de tela 2025-04-03 203129](https://github.com/user-attachments/assets/03b142a2-d677-438f-8e50-81fb73408298)
+
+![Captura de tela 2025-04-03 203246](https://github.com/user-attachments/assets/f21938aa-21fb-4bc0-9977-8d967d89c5f5)
+
 
 Nesta tela só iremos alterar **Capacidade desejada** para `2` e a **Escalabilidade** para mínimo `2` e máximo `4`. Isso sginifica que o mínimo de instâncias em execução será 2 e o máximo será 4, dependendo da carga de acesso.
 
-![Captura de tela 2025-04-03 203325](https://github.com/user-attachments/assets/f71b2540-acce-439c-912f-77a7fe1411d0)
+![Captura de tela 2025-04-03 203325](https://github.com/user-attachments/assets/8ea47f44-a6db-4389-bd03-ec5691e0c61c)
+
 
 Habilite as métricas de grupo no CloudWatch e clique em **Próximo** nas telas seguintes até **Criar o ASG**.
 
-![Captura de tela 2025-04-03 203502](https://github.com/user-attachments/assets/204a73e1-5f12-43d7-a2dd-3c9a5b7d5bb9)
+![Captura de tela 2025-04-03 203502](https://github.com/user-attachments/assets/9f9393a8-7746-4a59-aa8f-33a89f6e8ffc)
+
 
 **Auto Scaling Group Criado!** ✅
 
@@ -330,7 +343,8 @@ Navegando até o console de EC2 e Instâncias em execução, aguarde as duas ins
 
 Para acessar, navegue até o Load Balancer, copie o **Nome do DNS** e cole no navegador. Se as instâncias já estiverem em execução será mostrado a tela inicial de configuração do Wordpress.
 
-![Captura de tela 2025-04-03 204138](https://github.com/user-attachments/assets/b8d9f243-a1fb-4cdc-8504-53ba0cf12a64)
+![Captura de tela 2025-04-03 204138](https://github.com/user-attachments/assets/63cc90ac-f1c2-4e72-9d3f-18278ad63503)
+
 
 
 ## Etapa 5 - Monitoramento
@@ -343,32 +357,38 @@ No console EC2, vá até o Auto Scalig Group e clique no que criamos.
 
 Selecione a aba **Políticas de Escalabilidade Dinâmica** e clique em **Criar política de escalabilidade dinâmica**.
 
-![Captura de tela 2025-04-03 204955](https://github.com/user-attachments/assets/5d91b053-bff8-44fe-a2a3-91d96965a073)
+
+
+![Captura de tela 2025-04-03 204955](https://github.com/user-attachments/assets/8126fdd0-8d98-468c-bee9-5830cc412d18)
 
 Preencha conforme a imagem a seguir e clique em **Criar**.
 
-![Captura de tela 2025-04-03 211317](https://github.com/user-attachments/assets/d734c782-b635-4525-8249-e0b7ce8d603e)
+![Captura de tela 2025-04-03 211317](https://github.com/user-attachments/assets/8925df34-1147-4184-8b32-4eee8aee4869)
+
+
 
 Pesquise por ClourWatch no consle da AWS e vá para a página. 
 
 - Clique em **Alarmes** > **Em alarme** > **Criar alarme**.
 - Clique em **Selecionar Métrica** > **EC2** > **By Auto Scaling Group** e selecione `CPUUtilization`, clique em **Selecionar métrica**.
+- 
+![Captura de tela 2025-04-03 211840](https://github.com/user-attachments/assets/31a19731-7414-44f8-a309-ef67eb7302e5)
 
-![Captura de tela 2025-04-03 211840](https://github.com/user-attachments/assets/de7aeaac-5575-45a1-b7d5-2b45e169d2a1)
+
 
 Selecione **Maior/Igual** e defina `80`, clique em **Próximo**.
 
-![Captura de tela 2025-04-03 212003](https://github.com/user-attachments/assets/8835916c-df38-4768-8d7c-cc08cede66d3)
+![Captura de tela 2025-04-03 212003](https://github.com/user-attachments/assets/c453d4b3-bc35-4e49-83b8-19f91dffec42)
 
 Remova as notificações e adicione **Ação do Auto Scaling** selecionando o ASG que criamos. Clique em **Próximo**.
 
-![Captura de tela 2025-04-03 212346](https://github.com/user-attachments/assets/9d77d366-cd18-4273-876e-ca88b574d4c1)
+![Captura de tela 2025-04-03 212346](https://github.com/user-attachments/assets/c80fbeee-4531-4aab-8afc-047b70dab4db)
 
 Nomeie o alarme e clique em **Próximo** e em seguida **Criar Alarme**.
 
-![Captura de tela 2025-04-03 212442](https://github.com/user-attachments/assets/afc1b018-6131-4e97-b71b-b83026dcf3ae)
+![Captura de tela 2025-04-03 212442](https://github.com/user-attachments/assets/bf9c9000-aa53-434e-a1fe-f3c9867b3b18)
 
-![Captura de tela 2025-04-03 212644](https://github.com/user-attachments/assets/9dad458a-fba0-4819-8b6b-31260b861cb8)
+![Captura de tela 2025-04-03 212644](https://github.com/user-attachments/assets/fde46ea4-8f42-4cc0-85fe-33929973d9fa)
 
 ## Conclusão
 
